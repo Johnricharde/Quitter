@@ -1,6 +1,7 @@
 # Quitter #
 This project is an android app with the purpose of helping people quit smoking.  
-It was initially inspired by the app "Slutta" made by the Norwegian Directorate of Health.  
+It was initially inspired by the app "Slutta" made by the Norwegian Directorate of Health. 
+
 I myself have previously used "Slutta" and seen room for improvement.  
 This is my attempt at implementing those improvements in a new app.
 
