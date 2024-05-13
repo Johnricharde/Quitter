@@ -6,7 +6,7 @@ I myself have previously used "Slutta" and seen room for improvement.
 This is my attempt at implementing those improvements in a new app.
 
 Early concept design:  
-<img width="350" src="https://github.com/Johnricharde/Quitter/assets/117681128/0c3dfb84-ae3b-4f5a-aa45-ff4aebd9f475">
+<img width="250" src="https://github.com/Johnricharde/Quitter/assets/117681128/0c3dfb84-ae3b-4f5a-aa45-ff4aebd9f475">
 
 ## Tech: ##
 - Android Studio
