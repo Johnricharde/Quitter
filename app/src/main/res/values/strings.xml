@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Quitter</string>
+    <string name="header_txt_1">You\'ve gone</string>
+    <string name="header_txt_2">31 days</string>
+    <string name="header_txt_3">without smoking!</string>
+    <string name="quitter_all_cap">QUITTER</string>
+    <string name="craving_btn_txt">I have a craving!</string>
+    <string name="achievements_btn_txt">Achievements</string>
+    <string name="statistics_btn_txt">Statistics</string>
+    <string name="settings_btn_text">Settings</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -54,19 +56,33 @@ fun MainPage(modifier: Modifier = Modifier) {
         // Header //////////////////////////////////////////////////////////////////////////
         Surface(
             color = colorResource(id = R.color.gray),
+            shape = RoundedCornerShape(20.dp),
             modifier = modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
-                .weight(1f)
+                .weight(0.75f)
         ) {
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             )
             {
-                Text(text = "You've gone", color = colorResource(id = R.color.white))
-                Text(text = "31 days", color = colorResource(id = R.color.white))
-                Text(text = "without smoking!", color = colorResource(id = R.color.white))
+                Text(
+                    text = stringResource(R.string.header_txt_1),
+                    color = colorResource(id = R.color.white),
+                    fontSize = 20.sp,
+                )
+                // Day counter
+                Text(
+                    text = stringResource(R.string.header_txt_2),
+                    color = colorResource(id = R.color.white),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(text = stringResource(R.string.header_txt_3),
+                    color = colorResource(id = R.color.white),
+                    fontSize = 20.sp,
+                )
             }
         }
         // Body ////////////////////////////////////////////////////////////////////////////
@@ -80,12 +96,14 @@ fun MainPage(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                // Title
                 Text(
-                    text = "QUITTER",
+                    text = stringResource(R.string.quitter_all_cap),
                     color = colorResource(id = R.color.gray),
                     fontSize = 48.sp,
                     fontWeight = FontWeight.Bold,
                 )
+                // Logo
                 Image(
                     painter = painterResource(id = R.drawable.quitter_logo),
                     contentDescription = "Quitter Logo"
@@ -95,15 +113,17 @@ fun MainPage(modifier: Modifier = Modifier) {
         // Footer //////////////////////////////////////////////////////////////////////////
         Surface(
             color = colorResource(id = R.color.gray),
+            shape = RoundedCornerShape(20.dp),
             modifier = modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
                 .weight(2f)
         ) {
             Column(
-                verticalArrangement = Arrangement.Center,
+                verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                // Craving button
                 Button(
                     onClick = { /* Do something! */ },
                     colors = ButtonDefaults.buttonColors(
@@ -111,11 +131,34 @@ fun MainPage(modifier: Modifier = Modifier) {
                         contentColor = colorResource(id = R.color.gray)
                     )
                 ) {
-                    Text("I have a craving!")
+                    Text(
+                        stringResource(R.string.craving_btn_txt),
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = modifier.padding(8.dp)
+                    )
                 }
-                Text(text = "Achievements", color = colorResource(id = R.color.white))
-                Text(text = "Statistics", color = colorResource(id = R.color.white))
-                Text(text = "Settings", color = colorResource(id = R.color.white))
+                // Achievements button
+                Text(
+                    text = stringResource(R.string.achievements_btn_txt),
+                    color = colorResource(id = R.color.white),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                // Statistics button
+                Text(
+                    text = stringResource(R.string.statistics_btn_txt),
+                    color = colorResource(id = R.color.white),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                // Settings button
+                Text(
+                    text = stringResource(R.string.settings_btn_text),
+                    color = colorResource(id = R.color.white),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                )
             }
         }
     }
