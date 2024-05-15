@@ -16,6 +16,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,22 +68,8 @@ fun MainPage(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally,
             )
             {
-                Text(
-                    text = stringResource(R.string.header_txt_1),
-                    color = colorResource(id = R.color.white),
-                    fontSize = 20.sp,
-                )
                 // Day counter
-                Text(
-                    text = stringResource(R.string.header_txt_2),
-                    color = colorResource(id = R.color.white),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(text = stringResource(R.string.header_txt_3),
-                    color = colorResource(id = R.color.white),
-                    fontSize = 20.sp,
-                )
+                DayCounter()
             }
         }
         // Body ////////////////////////////////////////////////////////////////////////////
@@ -96,18 +83,8 @@ fun MainPage(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Title
-                Text(
-                    text = stringResource(R.string.quitter_all_cap),
-                    color = colorResource(id = R.color.gray),
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-                // Logo
-                Image(
-                    painter = painterResource(id = R.drawable.quitter_logo),
-                    contentDescription = "Quitter Logo"
-                )
+                // Title and Logo
+                DisplayLogo()
             }
         }
         // Footer //////////////////////////////////////////////////////////////////////////
@@ -124,46 +101,85 @@ fun MainPage(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 // Craving button
-                Button(
-                    onClick = { /* Do something! */ },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = colorResource(id = R.color.white),
-                        contentColor = colorResource(id = R.color.gray)
-                    )
-                ) {
-                    Text(
-                        stringResource(R.string.craving_btn_txt),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = modifier.padding(8.dp)
-                    )
-                }
+                FilledButton(onClick = { /*TODO*/ }, text = "Craving")
                 // Achievements button
-                Text(
-                    text = stringResource(R.string.achievements_btn_txt),
-                    color = colorResource(id = R.color.white),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                )
+                TextButton(onClick = { /*TODO*/ }, text = "Achievements")
                 // Statistics button
-                Text(
-                    text = stringResource(R.string.statistics_btn_txt),
-                    color = colorResource(id = R.color.white),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                )
+                TextButton(onClick = { /*TODO*/ }, text = "Statistics")
                 // Settings button
-                Text(
-                    text = stringResource(R.string.settings_btn_text),
-                    color = colorResource(id = R.color.white),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                )
+                TextButton(onClick = { /*TODO*/ }, text = "Settings")
             }
         }
     }
 }
 
+@Composable
+private fun DisplayLogo() {
+    Text(
+        text = stringResource(R.string.quitter_all_cap),
+        color = colorResource(id = R.color.gray),
+        fontSize = 48.sp,
+        fontWeight = FontWeight.Bold,
+    )
+    // Logo
+    Image(
+        painter = painterResource(id = R.drawable.quitter_logo),
+        contentDescription = "Quitter Logo"
+    )
+}
+
+@Composable
+private fun DayCounter() {
+    Text(
+        text = stringResource(R.string.header_txt_1),
+        color = colorResource(id = R.color.white),
+        fontSize = 20.sp,
+    )
+    Text(
+        // Need to show the count here
+        text = stringResource(R.string.header_txt_2),
+        color = colorResource(id = R.color.white),
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+    )
+    Text(
+        text = stringResource(R.string.header_txt_3),
+        color = colorResource(id = R.color.white),
+        fontSize = 20.sp,
+    )
+}
+
+@Composable
+private fun FilledButton(onClick: () -> Unit, text: String, modifier: Modifier = Modifier) {
+    Button(
+        onClick = { onClick() },
+        colors = ButtonDefaults.buttonColors(
+            containerColor = colorResource(id = R.color.white),
+            contentColor = colorResource(id = R.color.gray)
+        )
+    ) {
+        Text(
+            text,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = modifier.padding(8.dp)
+        )
+    }
+}
+
+@Composable
+private fun TextButton(onClick: () -> Unit, text: String) {
+    TextButton(
+        onClick = { onClick() }
+    ) {
+        Text(
+            text = text,
+            color = colorResource(id = R.color.white),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+        )
+    }
+}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
