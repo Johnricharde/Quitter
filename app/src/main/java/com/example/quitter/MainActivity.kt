@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.quitter.ui.theme.QuitterTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,7 +115,7 @@ fun MainPage(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun DisplayLogo() {
+fun DisplayLogo() {
     Text(
         text = stringResource(R.string.quitter_all_cap),
         color = colorResource(id = R.color.gray),
@@ -150,7 +151,7 @@ private fun DayCounter() {
 }
 
 @Composable
-private fun FilledButton(onClick: () -> Unit, text: String, modifier: Modifier = Modifier) {
+fun FilledButton(onClick: () -> Unit, text: String, modifier: Modifier = Modifier) {
     Button(
         onClick = { onClick() },
         colors = ButtonDefaults.buttonColors(
@@ -168,7 +169,7 @@ private fun FilledButton(onClick: () -> Unit, text: String, modifier: Modifier =
 }
 
 @Composable
-private fun TextButton(onClick: () -> Unit, text: String) {
+fun TextButton(onClick: () -> Unit, text: String) {
     TextButton(
         onClick = { onClick() }
     ) {
