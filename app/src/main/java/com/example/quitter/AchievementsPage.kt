@@ -25,6 +25,7 @@ fun AchievementsPage(modifier: Modifier = Modifier) {
             .padding(16.dp)
             .fillMaxSize()
     ) {
+        // Achievements grid
         LazyVerticalGrid(
             columns = GridCells.Adaptive(100.dp),
             modifier = modifier.weight(4f)
@@ -33,6 +34,7 @@ fun AchievementsPage(modifier: Modifier = Modifier) {
                 AchievementItem()
             }
         }
+        // Go back button
         Surface(
             color = colorResource(id = R.color.gray),
             shape = RoundedCornerShape(20.dp),
@@ -45,7 +47,6 @@ fun AchievementsPage(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Go back button
                 FilledButton(onClick = { /*TODO*/ }, text = "Go back")
             }
         }

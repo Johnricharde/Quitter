@@ -54,6 +54,7 @@ fun SettingsPage(modifier: Modifier = Modifier) {
                 SwitchMinimal()
             }
         }
+        // Go back button
         Surface(
             color = colorResource(id = R.color.gray),
             shape = RoundedCornerShape(20.dp),
