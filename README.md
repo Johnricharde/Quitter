@@ -17,6 +17,7 @@ Early concept design:
 
 ## Lessons learned: ##
 - Learnt more about developing android applications
+- Learnt about Jetpack Compose
 
 ## MIT License ##
 Copyright (c) 2024 John Richard Espedal
