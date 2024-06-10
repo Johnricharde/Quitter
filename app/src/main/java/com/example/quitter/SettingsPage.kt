@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.quitter.ui.theme.QuitterTheme
 
 @Composable
-fun SettingsPage(modifier: Modifier = Modifier) {
+fun SettingsPage(navController: NavHostController, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .padding(16.dp)
@@ -68,7 +70,7 @@ fun SettingsPage(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 // Go back button
-                FilledButton(onClick = { /*TODO*/ }, text = "Go back")
+                FilledButton(onClick = { navController.popBackStack() }, text = "Go back")
             }
         }
     }
@@ -89,6 +91,6 @@ fun SwitchMinimal() {
 @Composable
 fun SettingsPagePreview() {
     QuitterTheme {
-        SettingsPage()
+        SettingsPage(navController = rememberNavController())
     }
 }

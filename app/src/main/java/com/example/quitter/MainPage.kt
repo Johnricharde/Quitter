@@ -21,10 +21,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.quitter.ui.theme.QuitterTheme
+import androidx.navigation.NavHostController
+
 
 @Composable
-fun MainPage(modifier: Modifier = Modifier) {
+fun MainPage(navController: NavHostController, modifier: Modifier = Modifier) {
+
     Column(
         modifier = modifier
             .padding(16.dp)
@@ -78,11 +82,11 @@ fun MainPage(modifier: Modifier = Modifier) {
                 // Craving button
                 FilledButton(onClick = { /*TODO*/ }, text = "Craving")
                 // Achievements button
-                TextButton(onClick = { /*TODO*/ }, text = "Achievements")
+                TextButton(onClick = { navController.navigate("achievementsPage") }, text = "Achievements")
                 // Statistics button
-                TextButton(onClick = { /*TODO*/ }, text = "Statistics")
+                TextButton(onClick = { navController.navigate("statisticsPage") }, text = "Statistics")
                 // Settings button
-                TextButton(onClick = { /*TODO*/ }, text = "Settings")
+                TextButton(onClick = { navController.navigate("settingsPage") }, text = "Settings")
             }
         }
     }
@@ -124,6 +128,7 @@ private fun DayCounter() {
     )
 }
 
+
 @Composable
 fun FilledButton(onClick: () -> Unit, text: String, modifier: Modifier = Modifier) {
     Button(
@@ -160,6 +165,6 @@ fun TextButton(onClick: () -> Unit, text: String) {
 @Composable
 fun MainPagePreview() {
     QuitterTheme {
-        MainPage()
+        MainPage(navController = rememberNavController())
     }
 }

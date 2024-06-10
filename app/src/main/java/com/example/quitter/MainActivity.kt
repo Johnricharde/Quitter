@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.quitter.ui.theme.QuitterTheme
-
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +19,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             QuitterTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainPage(
+                    NavHost(
+                        navController = navController,
+                        startDestination = "mainPage",
                         modifier = Modifier.padding(innerPadding)
-                    )
+                    ) {
+                        composable("mainPage") { MainPage(navController) }
+                        composable("achievementsPage") { AchievementsPage(navController) }
+                        composable("statisticsPage") { StatisticsPage(navController) }
+                        composable("settingsPage") { SettingsPage(navController) }
+                    }
                 }
             }
         }

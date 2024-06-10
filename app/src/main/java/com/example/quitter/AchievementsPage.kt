@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.quitter.ui.theme.QuitterTheme
 
 @Composable
-fun AchievementsPage(modifier: Modifier = Modifier) {
+fun AchievementsPage(navController: NavHostController, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .padding(16.dp)
@@ -47,7 +49,7 @@ fun AchievementsPage(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                FilledButton(onClick = { /*TODO*/ }, text = "Go back")
+                FilledButton(onClick = { navController.popBackStack() }, text = "Go back")
             }
         }
     }
@@ -73,6 +75,6 @@ fun AchievementItem() {
 @Composable
 fun AchievementsPagePreview() {
     QuitterTheme {
-        AchievementsPage()
+        AchievementsPage(navController = rememberNavController())
     }
 }
