@@ -11,6 +11,7 @@ Early concept design:
 ## Tech: ##
 - Android Studio
 - Kotlin
+- Jetpack Compose
 
 ## Acknowledgements: ##
 - Inspired by the mobile app "Slutta", which was created by the Norwegian Directorate of Health.
