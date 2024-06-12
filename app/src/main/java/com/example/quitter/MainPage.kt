@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,114 +25,90 @@ import com.example.quitter.ui.theme.QuitterTheme
 
 @Composable
 fun MainPage(navController: NavHostController, modifier: Modifier = Modifier) {
-
     Column(
         modifier = modifier
             .padding(16.dp)
             .fillMaxSize()
     )
     {
-        // Day counter
-        Surface(
-            color = colorResource(id = R.color.gray),
-            shape = RoundedCornerShape(20.dp),
-            modifier = modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth()
-                .weight(0.75f)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            )
-            {
-                TimeCounter()
-            }
-        }
+        // Time counter
+        DisplayTimer(modifier.weight(0.4f))
+
         // Title and logo
-        Surface(
-            modifier = modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth()
-                .weight(2f)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                DisplayLogo()
-            }
-        }
+        DisplayLogo(modifier.weight(0.8f))
+
         // Navigation buttons
-        Surface(
-            color = colorResource(id = R.color.gray),
-            shape = RoundedCornerShape(20.dp),
-            modifier = modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth()
-                .weight(2f)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                // Craving button
-                FilledButton(onClick = {  }, text = "Craving")
-                // Achievements button
-                TextButton(onClick = { navController.navigate("achievementsPage") }, text = "Achievements")
-                // Statistics button
-                TextButton(onClick = { navController.navigate("statisticsPage") }, text = "Statistics")
-                // Settings button
-                TextButton(onClick = { navController.navigate("settingsPage") }, text = "Settings")
-            }
+        DisplayNavButtons(modifier.weight(1f), navController)
+    }
+}
+
+@Composable
+fun DisplayTimer(modifier: Modifier = Modifier) {
+    Surface(
+        color = colorResource(id = R.color.gray),
+        shape = RoundedCornerShape(20.dp),
+        modifier = modifier
+            .padding(top = 16.dp)
+            .fillMaxWidth()
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        )
+        {
+            TimeCounter()
         }
     }
 }
 
 @Composable
-fun DisplayLogo() {
-    Text(
-        text = stringResource(R.string.quitter_all_cap),
-        color = colorResource(id = R.color.gray),
-        fontSize = 48.sp,
-        fontWeight = FontWeight.Bold,
-    )
-    // Logo
-    Image(
-        painter = painterResource(id = R.drawable.quitter_logo),
-        contentDescription = "Quitter Logo"
-    )
-}
-
-@Composable
-fun FilledButton(onClick: () -> Unit, text: String, modifier: Modifier = Modifier) {
-    Button(
-        onClick = { onClick() },
-        colors = ButtonDefaults.buttonColors(
-            containerColor = colorResource(id = R.color.white),
-            contentColor = colorResource(id = R.color.gray)
-        )
+fun DisplayLogo(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier
+            .padding(16.dp)
+            .fillMaxWidth()
     ) {
-        Text(
-            text,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = modifier.padding(8.dp)
-        )
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text = stringResource(R.string.quitter_all_cap),
+                color = colorResource(id = R.color.gray),
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            // Logo
+            Image(
+                painter = painterResource(id = R.drawable.quitter_logo),
+                contentDescription = "Quitter Logo"
+            )
+        }
     }
 }
 
 @Composable
-fun TextButton(onClick: () -> Unit, text: String) {
-    androidx.compose.material3.TextButton(
-        onClick = { onClick() }
+fun DisplayNavButtons(modifier: Modifier, navController: NavHostController) {
+    Surface(
+        color = colorResource(id = R.color.gray),
+        shape = RoundedCornerShape(20.dp),
+        modifier = modifier
+            .padding(top = 16.dp)
+            .fillMaxWidth()
     ) {
-        Text(
-            text = text,
-            color = colorResource(id = R.color.white),
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-        )
+        Column(
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            // Craving button
+            CravingButton(url = "https://www.nytimes.com/crosswords", text = "Craving")
+            // Achievements button
+            TextButton(onClick = { navController.navigate("achievementsPage") }, text = "Achievements")
+            // Statistics button
+            TextButton(onClick = { navController.navigate("statisticsPage") }, text = "Statistics")
+            // Settings button
+            TextButton(onClick = { navController.navigate("settingsPage") }, text = "Settings")
+        }
     }
 }
 
