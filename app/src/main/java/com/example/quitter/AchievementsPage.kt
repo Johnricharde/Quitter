@@ -1,9 +1,7 @@
 package com.example.quitter
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -11,7 +9,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,22 +33,7 @@ fun AchievementsPage(navController: NavHostController, modifier: Modifier = Modi
                 AchievementItem()
             }
         }
-        // Go back button
-        Surface(
-            color = colorResource(id = R.color.gray),
-            shape = RoundedCornerShape(20.dp),
-            modifier = modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth()
-                .weight(1f)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                FilledButton(onClick = { navController.popBackStack() }, text = "Go back")
-            }
-        }
+        GoBackButton(modifier.weight(1f), navController)
     }
 }
 

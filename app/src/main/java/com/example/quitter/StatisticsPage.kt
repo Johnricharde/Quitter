@@ -6,13 +6,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,26 +50,9 @@ fun StatisticsPage(navController: NavHostController, modifier: Modifier = Modifi
                 Text("!")
             }
         }
-        // Go back button
-        Surface(
-            color = colorResource(id = R.color.gray),
-            shape = RoundedCornerShape(20.dp),
-            modifier = modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth()
-                .weight(1f)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                // Go back button
-                FilledButton(onClick = { navController.popBackStack() }, text = "Go back")
-            }
-        }
+        GoBackButton(modifier.weight(1f), navController)
     }
 }
-
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
