@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import java.util.Locale
@@ -50,13 +50,39 @@ fun TimeCounter() {
             text = formatTime(timeMillis = time),
             color = colorResource(id = R.color.white),
             fontSize = 40.sp)
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = stringResource(id = R.string.days),
+                color = colorResource(id = R.color.white),
+                fontSize = 15.sp
+            )
+            Text(
+                text = stringResource(id = R.string.hours),
+                color = colorResource(id = R.color.white),
+                fontSize = 15.sp
+            )
+            Text(
+                text = stringResource(id = R.string.minutes),
+                color = colorResource(id = R.color.white),
+                fontSize = 15.sp
+            )
+            Text(
+                text = stringResource(id = R.string.seconds),
+                color = colorResource(id = R.color.white),
+                fontSize = 15.sp
+            )
+        }
     }
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Button(
+        FilledButton(
             onClick = {
                 if (isRunning) {
                     isRunning = false
@@ -69,21 +95,19 @@ fun TimeCounter() {
                     editor.putBoolean("isRunning", true)
                     editor.apply()
                 }
-            }
-        ) {
-            Text(text = if (isRunning) "Stop" else "Start")
-        }
-        Button(
+            },
+            text = if (isRunning) "Stop" else "Start",
+        )
+        FilledButton(
             onClick = {
                 time = 0
                 isRunning = false
                 editor.putLong("startTime", 0L)
                 editor.putBoolean("isRunning", false)
                 editor.apply()
-            }
-        ) {
-            Text(text = "Reset")
-        }
+            },
+            text = "Reset"
+        )
     }
     LaunchedEffect(isRunning) {
         while (isRunning) {
@@ -100,5 +124,5 @@ fun formatTime(timeMillis: Long): String {
     val minutes = TimeUnit.MILLISECONDS.toMinutes(timeMillis) % 60
     val seconds = TimeUnit.MILLISECONDS.toSeconds(timeMillis) % 60
 
-    return String.format(Locale.getDefault(), "%02d:%02d:%02d:%02d", days, hours, minutes, seconds)
+    return String.format(Locale.getDefault(), "%02d : %02d : %02d : %02d", days, hours, minutes, seconds)
 }

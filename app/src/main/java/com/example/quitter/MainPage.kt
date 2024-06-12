@@ -32,7 +32,7 @@ fun MainPage(navController: NavHostController, modifier: Modifier = Modifier) {
     )
     {
         // Time counter
-        DisplayTimer(modifier.weight(0.4f))
+        DisplayTimer(modifier.weight(0.8f))
 
         // Title and logo
         DisplayLogo(modifier.weight(0.8f))
@@ -78,7 +78,6 @@ fun DisplayLogo(modifier: Modifier = Modifier) {
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold,
             )
-            // Logo
             Image(
                 painter = painterResource(id = R.drawable.quitter_logo),
                 contentDescription = "Quitter Logo"
@@ -101,13 +100,13 @@ fun DisplayNavButtons(modifier: Modifier, navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Craving button
-            CravingButton(url = "https://www.nytimes.com/crosswords", text = "Craving")
+            CravingButton(url = "https://www.nytimes.com/crosswords", text = stringResource(R.string.craving_btn_txt))
             // Achievements button
-            TextButton(onClick = { navController.navigate("achievementsPage") }, text = "Achievements")
+            TextButton(onClick = { navController.navigate("achievementsPage") }, text = stringResource(R.string.achievements_btn_txt))
             // Statistics button
-            TextButton(onClick = { navController.navigate("statisticsPage") }, text = "Statistics")
+            TextButton(onClick = { navController.navigate("statisticsPage") }, text = stringResource(R.string.statistics_btn_txt))
             // Settings button
-            TextButton(onClick = { navController.navigate("settingsPage") }, text = "Settings")
+            TextButton(onClick = { navController.navigate("settingsPage") }, text = stringResource(R.string.settings_btn_text))
         }
     }
 }
