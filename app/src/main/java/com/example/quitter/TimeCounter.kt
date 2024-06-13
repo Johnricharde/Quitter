@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -31,17 +33,28 @@ fun TimeCounter() {
     var time by remember { mutableLongStateOf(0L) }
     var isRunning by remember { mutableStateOf(false) }
     var startTime by remember { mutableLongStateOf(0L) }
+    var elapsedTime by remember { mutableLongStateOf(0L) }
+    var showDialog by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
     val sharedPreferences = context.getSharedPreferences("TimerPrefs", Context.MODE_PRIVATE)
     val editor = sharedPreferences.edit()
 
     LaunchedEffect(Unit) {
+        // Restore previous state from shared preferences
         startTime = sharedPreferences.getLong("startTime", 0L)
         isRunning = sharedPreferences.getBoolean("isRunning", false)
+        elapsedTime = sharedPreferences.getLong("elapsedTime", 0L)
+
         if (isRunning) {
-            time = System.currentTimeMillis() - startTime
+            // Calculate the current elapsed time
+            val currentTime = System.currentTimeMillis()
+            elapsedTime += currentTime - startTime
+            startTime = currentTime
         }
+
+        // Update time based on elapsed time
+        time = elapsedTime
     }
 
     Column(
@@ -52,7 +65,8 @@ fun TimeCounter() {
         Text(
             text = formatTime(timeMillis = time),
             color = colorResource(id = R.color.white),
-            fontSize = 40.sp)
+            fontSize = 40.sp
+        )
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly,
@@ -96,6 +110,7 @@ fun TimeCounter() {
             )
         }
     }
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -104,34 +119,74 @@ fun TimeCounter() {
         FilledButton(
             onClick = {
                 if (isRunning) {
+                    // Stop the timer
                     isRunning = false
-                    editor.putBoolean("isRunning", false)
-                    editor.apply()
+                    elapsedTime += System.currentTimeMillis() - startTime
                 } else {
+                    // Start or resume the timer
                     startTime = System.currentTimeMillis()
                     isRunning = true
-                    editor.putLong("startTime", startTime)
-                    editor.putBoolean("isRunning", true)
-                    editor.apply()
                 }
+                editor.putLong("startTime", startTime)
+                editor.putBoolean("isRunning", isRunning)
+                editor.putLong("elapsedTime", elapsedTime)
+                editor.apply()
             },
             text = if (isRunning) "Stop" else "Start",
         )
         FilledButton(
             onClick = {
-                time = 0
-                isRunning = false
-                editor.putLong("startTime", 0L)
-                editor.putBoolean("isRunning", false)
-                editor.apply()
+                // Show confirmation dialog for reset
+                showDialog = true
             },
             text = "Reset"
         )
     }
+
+    // Reset confirmation dialog
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                showDialog = false // Dismiss the dialog if clicked outside
+            },
+            title = {
+                Text(text = "Reset Timer")
+            },
+            text = {
+                Text(text = "Are you sure you want to reset the timer?")
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        // Reset the timer
+                        time = 0L
+                        isRunning = false
+                        startTime = 0L
+                        elapsedTime = 0L
+                        editor.clear().apply() // Clear all shared preferences
+                        showDialog = false // Dismiss the dialog
+                    }
+                ) {
+                    Text("Yes")
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        showDialog = false // Dismiss the dialog
+                    }
+                ) {
+                    Text("No")
+                }
+            }
+        )
+    }
+
     LaunchedEffect(isRunning) {
+        // Update the timer every second when running
         while (isRunning) {
             delay(1000)
-            time = System.currentTimeMillis() - startTime
+            time = elapsedTime + (System.currentTimeMillis() - startTime)
         }
     }
 }
