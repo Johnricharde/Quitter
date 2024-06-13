@@ -120,7 +120,7 @@ fun TimeCounter() {
 @Composable
 fun formatTime(timeMillis: Long): String {
     val days = TimeUnit.MILLISECONDS.toDays(timeMillis)
-    val hours = TimeUnit.MILLISECONDS.toHours(timeMillis)
+    val hours = TimeUnit.MILLISECONDS.toHours(timeMillis) % 24
     val minutes = TimeUnit.MILLISECONDS.toMinutes(timeMillis) % 60
     val seconds = TimeUnit.MILLISECONDS.toSeconds(timeMillis) % 60
 
