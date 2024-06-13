@@ -11,17 +11,24 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quitter.ui.theme.QuitterTheme
 
 @Composable
-fun SettingsPage(navController: NavHostController, modifier: Modifier = Modifier, themeViewModel: ThemeViewModel = viewModel()) {
+fun SettingsPage(
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+    themeViewModel: ThemeViewModel = viewModel()) {
     Column(
         modifier = modifier
             .padding(16.dp)
@@ -50,14 +57,6 @@ fun SettingsPage(navController: NavHostController, modifier: Modifier = Modifier
                 Text(text = "Setting")
                 SwitchMinimal()
             }
-            Row {
-                Text(text = "Setting")
-                SwitchMinimal()
-            }
-            Row {
-                Text(text = "Setting")
-                SwitchMinimal()
-            }
         }
         GoBackButton(modifier.weight(1f), navController)
     }
@@ -73,14 +72,6 @@ fun SwitchMinimal() {
     )
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun SettingsPagePreview() {
-    QuitterTheme {
-        SettingsPage(navController = rememberNavController())
-    }
-}
-
 @Composable
 fun ThemeSwitcher(darkTheme: Boolean, onThemeChange: () -> Unit) {
     Switch(
@@ -93,4 +84,12 @@ fun ThemeSwitcher(darkTheme: Boolean, onThemeChange: () -> Unit) {
             uncheckedThumbColor = MaterialTheme.colorScheme.primary
         )
     )
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun SettingsPagePreview() {
+    QuitterTheme {
+        SettingsPage(navController = rememberNavController())
+    }
 }
