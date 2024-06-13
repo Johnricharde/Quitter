@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import java.util.Locale
@@ -44,36 +47,52 @@ fun TimeCounter() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
+        modifier = Modifier.padding(16.dp)
     ) {
         Text(
             text = formatTime(timeMillis = time),
             color = colorResource(id = R.color.white),
             fontSize = 40.sp)
         Row(
-            horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
                 text = stringResource(id = R.string.days),
                 color = colorResource(id = R.color.white),
-                fontSize = 15.sp
+                fontSize = 12.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
             )
             Text(
                 text = stringResource(id = R.string.hours),
                 color = colorResource(id = R.color.white),
-                fontSize = 15.sp
+                fontSize = 12.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
             )
             Text(
                 text = stringResource(id = R.string.minutes),
                 color = colorResource(id = R.color.white),
-                fontSize = 15.sp
+                fontSize = 12.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
             )
             Text(
                 text = stringResource(id = R.string.seconds),
                 color = colorResource(id = R.color.white),
-                fontSize = 15.sp
+                fontSize = 12.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
             )
         }
     }

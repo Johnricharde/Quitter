@@ -51,7 +51,6 @@ fun DisplayTimer(modifier: Modifier = Modifier) {
         color = colorResource(id = R.color.gray),
         shape = RoundedCornerShape(20.dp),
         modifier = modifier
-            .padding(top = 16.dp)
             .fillMaxWidth()
     ) {
         Column(
