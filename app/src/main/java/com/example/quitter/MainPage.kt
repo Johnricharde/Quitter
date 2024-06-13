@@ -108,8 +108,6 @@ fun DisplayNavButtons(modifier: Modifier, navController: NavHostController) {
             CravingButton(url = "https://www.nytimes.com/crosswords", text = stringResource(R.string.craving_btn_txt))
             // Achievements button
             TextButton(onClick = { navController.navigate("achievementsPage") }, text = stringResource(R.string.achievements_btn_txt))
-            // Statistics button
-            TextButton(onClick = { navController.navigate("statisticsPage") }, text = stringResource(R.string.statistics_btn_txt))
             // Settings button
             TextButton(onClick = { navController.navigate("settingsPage") }, text = stringResource(R.string.settings_btn_text))
         }

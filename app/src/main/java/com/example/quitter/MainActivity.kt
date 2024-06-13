@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable("mainPage") { MainPage(navController, modifier = Modifier) }
                         composable("achievementsPage") { AchievementsPage(navController, modifier = Modifier) }
-                        composable("statisticsPage") { StatisticsPage(navController, modifier = Modifier) }
                         composable("settingsPage") { SettingsPage(navController, modifier = Modifier, themeViewModel) }
                     }
                 }
