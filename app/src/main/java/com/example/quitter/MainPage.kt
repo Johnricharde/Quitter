@@ -1,12 +1,14 @@
 package com.example.quitter
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +29,7 @@ import com.example.quitter.ui.theme.QuitterTheme
 fun MainPage(navController: NavHostController, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
+            .background(MaterialTheme.colorScheme.background)
             .padding(16.dp)
             .fillMaxSize()
     )
@@ -71,6 +74,8 @@ fun DisplayLogo(modifier: Modifier = Modifier) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.background)
         ) {
             Text(
                 text = stringResource(R.string.quitter_all_cap),
