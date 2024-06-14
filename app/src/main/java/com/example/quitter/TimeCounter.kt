@@ -115,6 +115,7 @@ fun TimeCounter() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.fillMaxWidth()
+            .padding(bottom = 8.dp)
     ) {
         FilledButton(
             onClick = {
@@ -132,7 +133,7 @@ fun TimeCounter() {
                 editor.putLong("elapsedTime", elapsedTime)
                 editor.apply()
             },
-            text = if (isRunning) "Stop" else "Start",
+            text = if (isRunning) "Stop" else "Start"
         )
         FilledButton(
             onClick = {

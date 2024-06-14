@@ -35,10 +35,10 @@ fun MainPage(navController: NavHostController, modifier: Modifier = Modifier) {
     )
     {
         // Time counter
-        DisplayTimer(modifier.weight(0.8f))
+        DisplayTimer(modifier.weight(0.7f))
 
         // Title and logo
-        DisplayLogo(modifier.weight(0.8f))
+        DisplayLogo(modifier.weight(0.9f))
 
         // Navigation buttons
         DisplayNavButtons(modifier.weight(1f), navController)
