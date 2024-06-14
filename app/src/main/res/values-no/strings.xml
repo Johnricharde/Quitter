@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quitter</string>
+    <string name="quitter_all_cap">QUITTER</string>
+
+    <!-- Generics -->
+    <string name="yes">Ja</string>
+    <string name="no">Nei</string>
+
+    <!-- MainPage timer -->
+    <string name="days">Dager</string>
+    <string name="hours">Timer</string>
+    <string name="minutes">Minutter</string>
+    <string name="seconds">Sekunder</string>
+
+    <!-- MainPage timer buttons -->
+    <string name="start">Start</string>
+    <string name="stop">Stopp</string>
+    <string name="reset">Nullstill</string>
+
+    <!-- MainPage timer reset confirmation -->
+    <string name="confirm_reset_title">Nullstill Tidtaker</string>
+    <string name="confirm_reset_body">Er du sikker på at du vil tilbakestille tidtakeren?</string>
+
+    <!-- buttons -->
+    <string name="craving_btn_txt">Jeg har røyksuget!</string>
+    <string name="achievements_btn_txt">Presentasjoner</string>
+    <string name="settings_btn_text">Innstillinger</string>
+    <string name="go_back_btn_txt">Gå tilbake</string>
+
+    <!-- Toggle switches -->
+    <string name="dark_mode_txt">Mørk modus</string>
+    <string name="language">Språk</string>
+</resources>
