@@ -1,11 +1,31 @@
 <resources>
     <string name="app_name">Quitter</string>
     <string name="quitter_all_cap">QUITTER</string>
-    <string name="craving_btn_txt">I have a craving!</string>
-    <string name="achievements_btn_txt">Achievements</string>
-    <string name="settings_btn_text">Settings</string>
+
+    <!-- Generics -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- MainPage timer -->
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
+
+    <!-- MainPage timer buttons -->
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
+    <!-- MainPage timer reset confirmation -->
+    <string name="confirm_reset_title">Reset Timer</string>
+    <string name="confirm_reset_body">Are you sure you want to reset the timer?</string>>
+
+    <!-- buttons -->
+    <string name="craving_btn_txt">I have a craving!</string>
+    <string name="achievements_btn_txt">Achievements</string>
+    <string name="settings_btn_text">Settings</string>
+    <string name="go_back_btn_txt">Go back</string>
+
+    <!-- Toggle switches -->
+    <string name="dark_mode_txt">Dark Mode</string>
 </resources>

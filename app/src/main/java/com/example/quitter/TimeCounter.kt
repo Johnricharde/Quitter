@@ -133,14 +133,14 @@ fun TimeCounter() {
                 editor.putLong("elapsedTime", elapsedTime)
                 editor.apply()
             },
-            text = if (isRunning) "Stop" else "Start"
+            text = if (isRunning) stringResource(id = R.string.stop) else stringResource(id = R.string.start)
         )
         FilledButton(
             onClick = {
                 // Show confirmation dialog for reset
                 showDialog = true
             },
-            text = "Reset"
+            text = stringResource(id = R.string.reset)
         )
     }
 
@@ -151,10 +151,10 @@ fun TimeCounter() {
                 showDialog = false // Dismiss the dialog if clicked outside
             },
             title = {
-                Text(text = "Reset Timer")
+                Text(text = stringResource(id = R.string.confirm_reset_title))
             },
             text = {
-                Text(text = "Are you sure you want to reset the timer?")
+                Text(text = stringResource(id = R.string.confirm_reset_body))
             },
             confirmButton = {
                 Button(
@@ -168,7 +168,7 @@ fun TimeCounter() {
                         showDialog = false // Dismiss the dialog
                     }
                 ) {
-                    Text("Yes")
+                    Text(stringResource(id = R.string.yes))
                 }
             },
             dismissButton = {
@@ -177,7 +177,7 @@ fun TimeCounter() {
                         showDialog = false // Dismiss the dialog
                     }
                 ) {
-                    Text("No")
+                    Text(stringResource(id = R.string.no))
                 }
             }
         )
