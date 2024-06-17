@@ -30,6 +30,17 @@ The core functionalities of the app:
 - Learnt about Jetpack Compose
 - Learnt how to use SharedPreferences to create a persistent timer, settings and achievements
 
+- ## Core Components/Files Explained ##
+1. Views:
+   - MainPage.kt
+   - AchievementsPage.kt
+   - SettingsPage.kt
+2. Tools:
+     - TimeCounter.kt
+     - ThemeView.kt
+     - Badge.kt
+     - buttons.kt
+
 ## MIT License ##
 Copyright (c) 2024 John Richard Espedal
 
