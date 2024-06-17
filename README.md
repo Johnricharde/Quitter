@@ -8,6 +8,12 @@ It was initially inspired by the app "Slutta" made by the Norwegian Directorate 
 I myself have previously used "Slutta" and seen room for improvement.  
 This is my attempt at implementing those improvements in a new app.
 
+The core functionalities of the app:
+1. A timer that persistently keeps track of how long you've gone without smoking.
+2. A Craving button that the user can click when they have the urge to smoke which sends them to the New York Times' games/puzzles section.
+3. An achievements page which keeps track of all previously earned milestones, such as "24 hours" without smokes, "1 week" etc.
+4. A settings menu which in its current state only allows the user to change from light mode to dark mode.
+
 #### Early concept design:  
 <img width="250" src="https://github.com/Johnricharde/Quitter/assets/117681128/0c3dfb84-ae3b-4f5a-aa45-ff4aebd9f475">
 
@@ -22,7 +28,7 @@ This is my attempt at implementing those improvements in a new app.
 ## Lessons learned: ##
 - Learnt more about developing android applications
 - Learnt about Jetpack Compose
-- Learnt how to create a persistent timer
+- Learnt how to use SharedPreferences to create a persistent timer, settings and achievements
 
 ## MIT License ##
 Copyright (c) 2024 John Richard Espedal
