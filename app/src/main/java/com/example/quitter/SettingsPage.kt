@@ -39,34 +39,23 @@ fun SettingsPage(
                 .fillMaxWidth()
                 .weight(4f)
         ) {
-            Row {
-                Text(text = stringResource(id = R.string.dark_mode_txt))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                modifier = modifier
+                    .fillMaxSize(0.5f)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.dark_mode_txt),
+                )
                 ThemeSwitcher(
                     darkTheme = themeViewModel.isDarkTheme,
                     onThemeChange = { themeViewModel.toggleTheme() }
                 )
             }
-            Row {
-                Text(text = "Setting")
-                SwitchMinimal()
-            }
-            Row {
-                Text(text = "Setting")
-                SwitchMinimal()
-            }
         }
         GoBackButton(modifier.weight(1f), navController)
     }
-}
-
-
-@Composable
-fun SwitchMinimal() {
-    Switch(
-        checked = true,
-        onCheckedChange = { /*TODO*/ },
-        modifier = Modifier
-    )
 }
 
 @Composable

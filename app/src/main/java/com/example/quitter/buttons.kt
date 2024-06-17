@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -90,7 +91,9 @@ fun GoBackButton(modifier: Modifier = Modifier, navController: NavHostController
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Go back button
-            FilledButton(onClick = { navController.popBackStack() }, text = "Go back")
+            FilledButton(
+                onClick = { navController.popBackStack() },
+                text = stringResource(id = R.string.go_back_btn_txt))
         }
     }
 }
