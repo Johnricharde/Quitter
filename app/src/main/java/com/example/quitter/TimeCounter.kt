@@ -40,6 +40,30 @@ fun TimeCounter() {
     val sharedPreferences = context.getSharedPreferences("TimerPrefs", Context.MODE_PRIVATE)
     val editor = sharedPreferences.edit()
 
+    val milestones = listOf(
+        Badge(1, "24 Hours", TimeUnit.DAYS.toMillis(1)),
+        Badge(2, "48 Hours", TimeUnit.DAYS.toMillis(2)),
+        Badge(3, "72 Hours", TimeUnit.DAYS.toMillis(3)),
+        Badge(5, "4 Days", TimeUnit.DAYS.toMillis(4)),
+        Badge(4, "5 Days", TimeUnit.DAYS.toMillis(5)),
+        Badge(6, "6 Days", TimeUnit.DAYS.toMillis(6)),
+        Badge(7, "1 Week", TimeUnit.DAYS.toMillis(7)),
+        Badge(8, "2 Weeks", TimeUnit.DAYS.toMillis(14)),
+        Badge(9, "3 Weeks", TimeUnit.DAYS.toMillis(21)),
+        Badge(10, "1 Month", TimeUnit.DAYS.toMillis(30)),
+        Badge(11, "2 Months", TimeUnit.DAYS.toMillis(60)),
+        Badge(12, "3 Months", TimeUnit.DAYS.toMillis(90)),
+        Badge(13, "4 Months", TimeUnit.DAYS.toMillis(120)),
+        Badge(14, "5 Months", TimeUnit.DAYS.toMillis(150)),
+        Badge(15, "6 Months", TimeUnit.DAYS.toMillis(180)),
+        Badge(16, "7 Months", TimeUnit.DAYS.toMillis(210)),
+        Badge(17, "8 Months", TimeUnit.DAYS.toMillis(240)),
+        Badge(18, "9 Months", TimeUnit.DAYS.toMillis(270)),
+        Badge(19, "10 Months", TimeUnit.DAYS.toMillis(300)),
+        Badge(20, "11 Months", TimeUnit.DAYS.toMillis(330)),
+        Badge(21, "12 Months", TimeUnit.DAYS.toMillis(360)),
+    )
+
     LaunchedEffect(Unit) {
         // Restore previous state from shared preferences
         startTime = sharedPreferences.getLong("startTime", 0L)
@@ -188,6 +212,20 @@ fun TimeCounter() {
         while (isRunning) {
             delay(1000)
             time = elapsedTime + (System.currentTimeMillis() - startTime)
+            checkMilestones(time, milestones, context)
+        }
+    }
+}
+
+fun checkMilestones(time: Long, milestones: List<Badge>, context: Context) {
+    val sharedPreferences = context.getSharedPreferences("BadgesPrefs", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    milestones.forEach { milestone ->
+        val badgeKey = "badge_${milestone.id}"
+        val isEarned = sharedPreferences.getBoolean(badgeKey, false)
+        if (!isEarned && time >= milestone.milestoneMillis) {
+            editor.putBoolean(badgeKey, true)
+            editor.apply()
         }
     }
 }
