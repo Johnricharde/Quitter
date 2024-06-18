@@ -31,15 +31,36 @@ The core functionalities of the app:
 - Learnt how to use SharedPreferences to create a persistent timer, settings and achievements
 
 - ## Core Components/Files Explained ##
-1. Views:
-   - MainPage.kt
-   - AchievementsPage.kt
-   - SettingsPage.kt
-2. Tools:
-     - TimeCounter.kt
-     - ThemeView.kt
-     - Badge.kt
-     - buttons.kt
+1. ### Views: ###
+   - #### MainPage.kt ####
+      The main entry point for the UI, which arranges the components in a column layout. It contains a timer display, a logo, and navigation buttons.
+      1. DisplayTimer: Displays a timer inside a rounded rectangle surface.
+      2. DisplayLogo: Shows the app's title and logo.
+      3. DisplayNavButtons: Provides navigation buttons for different sections (Craving, Achievements, Settings).
+   - #### AchievementsPage.kt ####
+      A composable function that displays the achievements view in the app.
+      1. LocalBadgesPreferences: Provides shared preferences for managing badge achievements.
+      2. AchievementsPage: The main composable function that arranges the achievements in a grid layout.
+         - Retrieves shared preferences.
+         - Displays a grid of badges using LazyVerticalGrid.
+         - Includes a "Go Back" button for navigation.
+      3. AchievementItem: A composable function representing each badge in the grid.
+         - Checks if a badge is earned using shared preferences.
+         - Displays the badge title and its earned status in a styled Surface.
+   - #### SettingsPage.kt ####
+      A composable function that displays the settings view in the app.
+      1. SettingsPage: The main composable function that arranges the settings options.
+         - Includes a switch to toggle between dark and light themes.
+         - Uses a ThemeViewModel to manage the theme state.
+         - Contains a "Go Back" button for navigation.
+      2. ThemeSwitcher: A composable function for the theme toggle switch.
+         - Displays a switch to toggle dark mode.
+         - Updates the theme state based on the switch position.
+2. ### Tools: ###
+     - #### TimeCounter.kt ####
+     - #### ThemeView.kt ####
+     - #### Badge.kt ####
+     - #### buttons.kt ####
 
 ## MIT License ##
 Copyright (c) 2024 John Richard Espedal
