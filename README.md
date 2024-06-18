@@ -36,7 +36,7 @@ The core functionalities of the app:
    Entry point for an Android app using Jetpack Compose and Navigation.
    In essence, MainActivity.kt sets up the app's fundamental structure, manages theme preferences, and facilitates navigation between key screens using Jetpack Compose and Navigation components.
 
-   Functionality:
+   - Functionality:
       - Enables edge-to-edge display for immersive experience.
       - Initializes ViewModel (themeViewModel) for theme management.
       - Uses QuitterTheme to apply dark/light theme based on themeViewModel.isDarkTheme.
