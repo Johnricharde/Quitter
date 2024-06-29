@@ -30,7 +30,7 @@ The core functionalities of the app:
 - Learnt about Jetpack Compose
 - Learnt how to use SharedPreferences to create a persistent timer, settings and achievements
 
-- ## Core Components/Files Explained ##
+## Core Components/Files Explained ##
   
 1. ### MainActivity: ###
    Entry point for an Android app using Jetpack Compose and Navigation.
