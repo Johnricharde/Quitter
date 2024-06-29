@@ -22,13 +22,18 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quitter.ui.theme.QuitterTheme
 import java.util.concurrent.TimeUnit
 
 val LocalBadgesPreferences = staticCompositionLocalOf<SharedPreferences> { error("No preferences provided") }
+
+data class Badge(
+    val id: Int,
+    val title: String,
+    val milestoneMillis: Long
+)
 
 @Composable
 fun AchievementsPage(navController: NavHostController, modifier: Modifier = Modifier) {
